@@ -1,20 +1,55 @@
 <style>
+  /* 1. 기본 레이아웃 확장 */
+  .wrapper {
+    max-width: 98% !important;
+    width: 98% !important;
+    margin: 0 auto !important;
+  }
+
+  /* 2. 테이블 설정: 콘텐츠 크기에 맞춰 유연하게 조절 */
   table {
-    /* 나머지 열들이 자유롭게 조절되도록 auto로 설정 */
-    table-layout: auto !important; 
+    table-layout: auto !important; /* 고정 대신 자동 조절로 변경 */
     width: 100% !important;
     border-collapse: collapse;
+    margin-bottom: 30px !important;
   }
 
-  /* 가장 왼쪽(첫 번째) 열만 너비 지정 */
-  th:first-child, td:first-child {
-    width: 300px !important; /* 원하는 너비(px 또는 %)로 조정하세요 */
-    min-width: 200px !important; /* 화면이 작아져도 유지할 최소 너비 */
-    word-break: keep-all !important; /* 텍스트가 제멋대로 잘리지 않게 설정 */
+  /* 3. 첫 번째 열: 텍스트 줄바꿈 최소화 (여유 있는 폭) */
+  th:nth-child(1), td:nth-child(1) {
+    width: 220px !important;      /* 텍스트가 한 번만 꺾이도록 넉넉히 할당 */
+    min-width: 200px !important;
+    padding-right: 15px !important;
+    word-break: keep-all !important; /* 단어 중간에서 잘리지 않게 함 */
+    white-space: normal !important;
     text-align: left;
-    padding-left: 10px;
+    vertical-align: middle;
   }
 
+  /* 4. 두 번째, 세 번째 열: 스펙트로그램/오디오 길이에 딱 맞게 */
+  th:nth-child(2), td:nth-child(2),
+  th:nth-child(3), td:nth-child(3) {
+    width: auto !important;       /* 내용물 크기에 따라 자동으로 맞춤 */
+    padding: 10px !important;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  /* 5. 이미지(스펙트로그램) 및 오디오 플레이어 최적화 */
+  img {
+    max-width: 100% !important;    /* 칸 너비를 넘지 않도록 */
+    height: auto !important;
+    display: block;
+    margin: 0 auto 5px auto;      /* 오디오 플레이어와 간격 조절 */
+  }
+
+  audio {
+    width: 100% !important;        /* 스펙트로그램 이미지 폭에 맞춰 꽉 차게 */
+    min-width: 200px;              /* 너무 작아지면 컨트롤이 안 보이므로 하한선 설정 */
+  }
+
+  /* 6. 헤더 및 섹션 비율 재조정 (전체 폭 활용) */
+  header { width: 250px !important; }
+  section { width: calc(100% - 280px) !important; }
 </style>
 
 # AEC demo page for TASLP submission
