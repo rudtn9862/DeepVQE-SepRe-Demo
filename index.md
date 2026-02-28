@@ -1,54 +1,20 @@
 <style>
-  /* 1. 최외곽 컨테이너의 폭 제한(800px~1000px)을 완전히 제거 */
-  .wrapper {
-    max-width: 98% !important; 
-    width: 98% !important;
-    margin: 0 auto !important;
-    display: flex !important; /* 사이드바와 본문을 유연하게 배치 */
-    flex-wrap: wrap;
-  }
-
-  /* 2. 왼쪽 사이드바(제목/설명 부분) 폭 고정 및 조정 */
-  header {
-    width: 280px !important; /* 사이드바 폭을 적당히 고정 */
-    float: none !important;
-    position: sticky !important; /* 스크롤 내려도 제목이 보이게 고정 (선택) */
-    top: 20px;
-  }
-
-  /* 3. 본문 영역을 나머지 가로 공간 전체로 확장 */
-  section {
-    width: calc(100% - 320px) !important; /* 전체에서 사이드바 폭을 뺀 나머지 전부 */
-    float: none !important;
-    max-width: none !important;
-    padding-left: 20px !important;
-  }
-
-  /* 4. 테이블이 본문 너비에 맞춰 꽉 차게 확장 */
   table {
-    display: table !important;
+    /* 나머지 열들이 자유롭게 조절되도록 auto로 설정 */
+    table-layout: auto !important; 
     width: 100% !important;
-    margin: 20px 0 !important;
-    table-layout: auto !important; /* 내용에 맞춰 열 너비 조절 */
+    border-collapse: collapse;
   }
 
-  /* 5. 모바일 환경(화면이 좁아질 때) 대응 */
-  @media screen and (max-width: 1000px) {
-    .wrapper {
-      width: 95% !important;
-      display: block !important;
-    }
-    header, section {
-      width: 100% !important;
-      position: static !important;
-    }
+  /* 가장 왼쪽(첫 번째) 열만 너비 지정 */
+  th:first-child, td:first-child {
+    width: 150px !important; /* 원하는 너비(px 또는 %)로 조정하세요 */
+    min-width: 120px !important; /* 화면이 작아져도 유지할 최소 너비 */
+    word-break: keep-all !important; /* 텍스트가 제멋대로 잘리지 않게 설정 */
+    text-align: left;
+    padding-left: 10px;
   }
 
-  /* 오디오 플레이어 크기 최적화 */
-  audio {
-    width: 100%;
-    min-width: 120px;
-  }
 </style>
 
 # AEC demo page for TASLP submission
@@ -64,7 +30,7 @@
 | <span style="font-size: 15px;">**Near-end(Label)** | <img src="Synthetic_RIR/DT/spec/snr24_ser-4_d9990_clean.jpg" width="500"><br><audio controls style="width: 500px;"><source src="Synthetic_RIR/DT/audio/snr24_ser-4_d9990_clean.wav"></audio> | N/A |
 | <span style="font-size: 15px;">**F-T-LSTM [1]** | <img src="Synthetic_RIR/DT/spec/snr24_ser-4_d9990_ftlstm.jpg" width="500"><br><audio controls style="width: 500px;"><source src="Synthetic_RIR/DT/audio/snr24_ser-4_d9990_ftlstm.wav"></audio> | <img src="Synthetic_RIR/FEST/spec/ftlstm_6_snr37_ser-7_d2532.jpg" width="500"><br><audio controls style="width: 500px;"><source src="Synthetic_RIR/FEST/audio/ftlstm_6_snr37_ser-7_d2532.wav"></audio> |
 | <span style="font-size: 15px;">**DeepVQE-S [2]** | <img src="Synthetic_RIR/DT/spec/snr24_ser-4_d9990_DeepVQE-S.jpg" width="500"><br><audio controls style="width: 500px;"><source src="Synthetic_RIR/DT/audio/snr24_ser-4_d9990_DeepVQE-S.wav"></audio> | <img src="Synthetic_RIR/FEST/spec/DeepVQE-S_6_snr37_ser-7_d2532.jpg" width="500"><br><audio controls style="width: 500px;"><source src="Synthetic_RIR/FEST/audio/DeepVQE-S_6_snr37_ser-7_d2532.wav"></audio> |
-| <span style="font-size: 15px;">**DeepVQE-L [2]** | <img src="Synthetic_RIR/DT/spec/snr24_ser-4_d9990_DeepVQE-L.jpg" width="500"><br><audio controls style="width: 500px;"><source src="Synthetic_RIR/DT/audio/snr24_ser-4_d9990_DeepVQE-L.wav"></audio> | <img src="Syntetic_RIR/FEST/spec/DeepVQE-L_6_snr37_ser-7_d2532.jpg" width="500"><br><audio controls style="width: 500px;"><source src="Synthetic_RIR/FEST/audio/DeepVQE-L_6_snr37_ser-7_d2532.wav"></audio> |
+| <span style="font-size: 15px;">**DeepVQE-L [2]** | <img src="Synthetic_RIR/DT/spec/snr24_ser-4_d9990_DeepVQE-L.jpg" width="500"><br><audio controls style="width: 500px;"><source src="Synthetic_RIR/DT/audio/snr24_ser-4_d9990_DeepVQE-L.wav"></audio> | <img src="Synthetic_RIR/FEST/spec/DeepVQE-L_6_snr37_ser-7_d2532.jpg" width="500"><br><audio controls style="width: 500px;"><source src="Synthetic_RIR/FEST/audio/DeepVQE-L_6_snr37_ser-7_d2532.wav"></audio> |
 | <span style="font-size: 15px;">**TSDPANet [3]** | <img src="Synthetic_RIR/DT/spec/snr24_ser-4_d9990_tsdpanet.jpg" width="500"><br><audio controls style="width: 500px;"><source src="Synthetic_RIR/DT/audio/snr24_ser-4_d9990_tsdpanet.wav"></audio> | <img src="Synthetic_RIR/FEST/spec/tsdpanet_6_snr37_ser-7_d2532.jpg" width="500"><br><audio controls style="width: 500px;"><source src="Synthetic_RIR/FEST/audio/tsdpanet_6_snr37_ser-7_d2532.wav"></audio> |
 | <span style="font-size: 15px;">**DeepVQE-SepRe<br>(AEC-only)** | <img src="Synthetic_RIR/DT/spec/snr24_ser-4_d9990_prop1.jpg" width="500"><br><audio controls style="width: 500px;"><source src="Synthetic_RIR/DT/audio/snr24_ser-4_d9990_prop1.wav"></audio> | <img src="Synthetic_RIR/FEST/spec/Prop1_6_snr37_ser-7_d2532.jpg" width="500"><br><audio controls style="width: 500px;"><source src="Synthetic_RIR/FEST/audio/Prop1_6_snr37_ser-7_d2532.wav"></audio> |
 | <span style="font-size: 15px;">**DeepVQE-SepRe<br>(Joint-training)**| <img src="Synthetic_RIR/DT/spec/snr24_ser-4_d9990_prop2.jpg" width="500"><br><audio controls style="width: 500px;"><source src="Synthetic_RIR/DT/audio/snr24_ser-4_d9990_prop2.wav"></audio> | <img src="Synthetic_RIR/FEST/spec/Prop2_6_snr37_ser-7_d2532.jpg" width="500"><br><audio controls style="width: 500px;"><source src="Synthetic_RIR/FEST/audio/Prop2_6_snr37_ser-7_d2532.wav"></audio> |
