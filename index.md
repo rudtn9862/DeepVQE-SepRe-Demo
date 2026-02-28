@@ -8,7 +8,7 @@
 
   /* 가장 왼쪽(첫 번째) 열만 너비 지정 */
   th:first-child, td:first-child {
-    width: 150px !important; /* 원하는 너비(px 또는 %)로 조정하세요 */
+    width: 200px !important; /* 원하는 너비(px 또는 %)로 조정하세요 */
     min-width: 120px !important; /* 화면이 작아져도 유지할 최소 너비 */
     word-break: keep-all !important; /* 텍스트가 제멋대로 잘리지 않게 설정 */
     text-align: left;
