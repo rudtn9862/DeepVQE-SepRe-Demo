@@ -1,55 +1,62 @@
 <style>
-  /* 1. 기본 레이아웃 확장 */
+  /* 1. 페이지 전체 가로 스크롤 방지 */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100%;
+  }
+
   .wrapper {
     max-width: 98% !important;
     width: 98% !important;
     margin: 0 auto !important;
+    display: flex !important;
   }
 
-  /* 2. 테이블 설정: 콘텐츠 크기에 맞춰 유연하게 조절 */
+  /* 2. 테이블 가로 스크롤 강제 해제 */
   table {
-    table-layout: auto !important; /* 고정 대신 자동 조절로 변경 */
+    display: table !important;      /* block 속성으로 인한 스크롤 제거 */
     width: 100% !important;
+    table-layout: auto !important;  /* 컨텐츠에 맞게 조절 */
+    overflow-x: visible !important; /* 내부 스크롤 박멸 */
     border-collapse: collapse;
-    margin-bottom: 30px !important;
   }
 
-  /* 3. 첫 번째 열: 텍스트 줄바꿈 최소화 (여유 있는 폭) */
+  /* 3. 첫 번째 열: 텍스트가 넉넉히 들어가되 전체를 밀어내지 않게 설정 */
   th:nth-child(1), td:nth-child(1) {
-    width: 220px !important;      /* 텍스트가 한 번만 꺾이도록 넉넉히 할당 */
-    min-width: 200px !important;
-    padding-right: 15px !important;
-    word-break: keep-all !important; /* 단어 중간에서 잘리지 않게 함 */
+    width: 20% !important;          /* 픽셀 대신 퍼센트로 유연하게 설정 */
+    min-width: 160px !important;
+    word-break: keep-all !important;
     white-space: normal !important;
     text-align: left;
-    vertical-align: middle;
   }
 
-  /* 4. 두 번째, 세 번째 열: 스펙트로그램/오디오 길이에 딱 맞게 */
-  th:nth-child(2), td:nth-child(2),
-  th:nth-child(3), td:nth-child(3) {
-    width: auto !important;       /* 내용물 크기에 따라 자동으로 맞춤 */
-    padding: 10px !important;
-    text-align: center;
-    vertical-align: middle;
-  }
-
-  /* 5. 이미지(스펙트로그램) 및 오디오 플레이어 최적화 */
+  /* 4. 이미지(스펙트로그램) 설정: 칸 너비에 맞춰 자동 축소 */
   img {
-    max-width: 100% !important;    /* 칸 너비를 넘지 않도록 */
+    max-width: 100% !important;     /* 이미지가 칸보다 크면 자동으로 줄어듦 */
     height: auto !important;
     display: block;
-    margin: 0 auto 5px auto;      /* 오디오 플레이어와 간격 조절 */
+    margin: 0 auto;
   }
 
+  /* 5. 오디오 플레이어 설정 */
   audio {
-    width: 100% !important;        /* 스펙트로그램 이미지 폭에 맞춰 꽉 차게 */
-    min-width: 200px;              /* 너무 작아지면 컨트롤이 안 보이므로 하한선 설정 */
+    width: 100% !important;
+    min-width: 140px;               /* 너무 작아져서 컨트롤이 깨지는 것 방지 */
   }
 
-  /* 6. 헤더 및 섹션 비율 재조정 (전체 폭 활용) */
-  header { width: 250px !important; }
-  section { width: calc(100% - 280px) !important; }
+  /* 6. 레이아웃 비율 고정 */
+  header { width: 260px !important; flex-shrink: 0; }
+  section { 
+    width: calc(100% - 280px) !important; 
+    flex-grow: 1;
+    overflow: hidden;               /* 섹션 밖으로 튀어나가는 것 방지 */
+  }
+
+  /* 모바일 대응 */
+  @media screen and (max-width: 1000px) {
+    .wrapper { display: block !important; }
+    header, section { width: 100% !important; }
+  }
 </style>
 
 # AEC demo page for TASLP submission
