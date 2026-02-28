@@ -23,7 +23,7 @@
 
   /* 3. 첫 번째 열: 텍스트가 넉넉히 들어가되 전체를 밀어내지 않게 설정 */
   th:nth-child(1), td:nth-child(1) {
-    width: 20% !important;          /* 픽셀 대신 퍼센트로 유연하게 설정 */
+    width: 15% !important;          /* 픽셀 대신 퍼센트로 유연하게 설정 */
     min-width: 160px !important;
     word-break: keep-all !important;
     white-space: normal !important;
@@ -45,7 +45,7 @@
   }
 
   /* 6. 레이아웃 비율 고정 */
-  header { width: 260px !important; flex-shrink: 0; }
+  header { width: 26px !important; flex-shrink: 0; }
   section { 
     width: calc(100% - 280px) !important; 
     flex-grow: 1;
