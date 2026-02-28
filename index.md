@@ -1,35 +1,53 @@
 <style>
-  /* 1. 전체 컨테이너 폭을 화면에 맞게 확장 */
+  /* 1. 최외곽 컨테이너의 폭 제한(800px~1000px)을 완전히 제거 */
   .wrapper {
-    max-width: 95% !important; /* 원래 800px 정도로 제한된 폭을 95%로 확장 */
+    max-width: 98% !important; 
+    width: 98% !important;
     margin: 0 auto !important;
+    display: flex !important; /* 사이드바와 본문을 유연하게 배치 */
+    flex-wrap: wrap;
   }
 
-  /* 2. 본문 영역(section) 너비 조정 */
+  /* 2. 왼쪽 사이드바(제목/설명 부분) 폭 고정 및 조정 */
+  header {
+    width: 280px !important; /* 사이드바 폭을 적당히 고정 */
+    float: none !important;
+    position: sticky !important; /* 스크롤 내려도 제목이 보이게 고정 (선택) */
+    top: 20px;
+  }
+
+  /* 3. 본문 영역을 나머지 가로 공간 전체로 확장 */
   section {
-    width: 100% !important;
-    padding: 20px 0 !important;
+    width: calc(100% - 320px) !important; /* 전체에서 사이드바 폭을 뺀 나머지 전부 */
+    float: none !important;
+    max-width: none !important;
+    padding-left: 20px !important;
   }
 
-  /* 3. 표(Table) 가로 스크롤 강제 해제 및 확장 */
+  /* 4. 테이블이 본문 너비에 맞춰 꽉 차게 확장 */
   table {
-    display: table !important; /* 스크롤 대신 전체 너비 사용 */
+    display: table !important;
     width: 100% !important;
-    min-width: 100% !important;
-    margin-bottom: 20px !important;
-    table-layout: fixed; /* 열 너비를 균등하게 조정 */
+    margin: 20px 0 !important;
+    table-layout: auto !important; /* 내용에 맞춰 열 너비 조절 */
   }
 
-  /* 4. 오디오 플레이어가 넘치지 않도록 조정 */
+  /* 5. 모바일 환경(화면이 좁아질 때) 대응 */
+  @media screen and (max-width: 1000px) {
+    .wrapper {
+      width: 95% !important;
+      display: block !important;
+    }
+    header, section {
+      width: 100% !important;
+      position: static !important;
+    }
+  }
+
+  /* 오디오 플레이어 크기 최적화 */
   audio {
-    width: 100% !important;
-    min-width: 150px;
-  }
-
-  /* 5. 표의 각 칸(th, td) 안의 텍스트 줄바꿈 허용 */
-  th, td {
-    word-break: break-all;
-    white-space: normal !important;
+    width: 100%;
+    min-width: 120px;
   }
 </style>
 
