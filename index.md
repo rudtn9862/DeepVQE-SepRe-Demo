@@ -1,4 +1,25 @@
-..# AEC demo page for TASLP submission
+<style>
+  /* 전체 컨테이너 폭 제한 해제 */
+  .wrapper, .container, section {
+    max-width: 95% !important; /* 화면의 95%를 사용 */
+    width: auto !important;
+    margin: 0 auto !important;
+  }
+
+  /* 테이블이나 오디오 세션의 가로 스크롤 방지 및 너비 확장 */
+  table {
+    display: table !important; /* 스크롤 대신 전체 펼치기 */
+    width: 100% !important;
+    margin-bottom: 20px;
+  }
+
+  /* 본문 폰트 크기나 여백 조정 (선택 사항) */
+  #main_content {
+    width: 100% !important;
+  }
+</style>
+
+# AEC demo page for TASLP submission
 
 ## 1. Synthetic RIR Environment
 
