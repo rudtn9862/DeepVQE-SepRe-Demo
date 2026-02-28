@@ -1,21 +1,35 @@
 <style>
-  /* 전체 컨테이너 폭 제한 해제 */
-  .wrapper, .container, section {
-    max-width: 95% !important; /* 화면의 95%를 사용 */
-    width: auto !important;
+  /* 1. 전체 컨테이너 폭을 화면에 맞게 확장 */
+  .wrapper {
+    max-width: 95% !important; /* 원래 800px 정도로 제한된 폭을 95%로 확장 */
     margin: 0 auto !important;
   }
 
-  /* 테이블이나 오디오 세션의 가로 스크롤 방지 및 너비 확장 */
-  table {
-    display: table !important; /* 스크롤 대신 전체 펼치기 */
+  /* 2. 본문 영역(section) 너비 조정 */
+  section {
     width: 100% !important;
-    margin-bottom: 20px;
+    padding: 20px 0 !important;
   }
 
-  /* 본문 폰트 크기나 여백 조정 (선택 사항) */
-  #main_content {
+  /* 3. 표(Table) 가로 스크롤 강제 해제 및 확장 */
+  table {
+    display: table !important; /* 스크롤 대신 전체 너비 사용 */
     width: 100% !important;
+    min-width: 100% !important;
+    margin-bottom: 20px !important;
+    table-layout: fixed; /* 열 너비를 균등하게 조정 */
+  }
+
+  /* 4. 오디오 플레이어가 넘치지 않도록 조정 */
+  audio {
+    width: 100% !important;
+    min-width: 150px;
+  }
+
+  /* 5. 표의 각 칸(th, td) 안의 텍스트 줄바꿈 허용 */
+  th, td {
+    word-break: break-all;
+    white-space: normal !important;
   }
 </style>
 
